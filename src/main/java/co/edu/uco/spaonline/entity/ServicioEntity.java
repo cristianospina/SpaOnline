@@ -1,6 +1,6 @@
 package co.edu.uco.spaonline.entity;
 
-import java.math.BigDecimal;
+
 import java.util.UUID;
 
 public final class ServicioEntity {
@@ -9,13 +9,13 @@ public final class ServicioEntity {
 	private String nombre;
 	private String descipcion;
 	private String tiposervicio;
-	private BigDecimal tarifa;
+	private Long tarifa;
 	
-	private ServicioEntity() {
+	public ServicioEntity() {
 		super();
 	}
 
-	private ServicioEntity(final UUID id,final String nombre,final String descipcion,final String tiposervicio,final BigDecimal tarifa) {
+	public ServicioEntity(final UUID id,final String nombre,final String descipcion,final String tiposervicio,final Long tarifa) {
 		setId(id);
 		setNombre(nombre);
 		setDescipcion(descipcion);
@@ -63,11 +63,11 @@ public final class ServicioEntity {
 		return this;
 	}
 	
-	public final BigDecimal getTarifa() {
+	public final Long getTarifa() {
 		return tarifa;
 	}
 	
-	public final ServicioEntity setTarifa(BigDecimal tarifa) {
+	public final ServicioEntity setTarifa(Long tarifa) {
 		this.tarifa = tarifa;
 		return this;
 	}
