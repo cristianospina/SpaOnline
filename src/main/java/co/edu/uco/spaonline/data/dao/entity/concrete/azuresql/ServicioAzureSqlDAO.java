@@ -45,7 +45,7 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 		} catch(SQLException exception) {
 			var mensajeUsuario = "Se ha presentado un error al intentar crear un servicio, por favor intentarlo más tardes...";
 			var mensajeTecnico = "Se ha presentado un error de tipo SQLException tratando de crear un nuevo servicio";
-			//var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00030);
+			//var mensajeUsuario = TextHelper.reemplazarParametro(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00030), exception) ;
 			//var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00031);
 			throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, exception);
 		}
@@ -80,12 +80,12 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 		        sentenciaPreparada.executeUpdate();
 		    }
 		    catch(final SQLException excepcion){
-		        var mensajeUsuario = "se ha presentado un problema tratando de modificar una Ciudad";
-		        var mensajeTecnico = "Se ha presentado un problema de tipo SQLException en el método modificar de la clase CiudadAzureSqlDAO tratando de llevar a cabo la modificación del Ciudad \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+		        var mensajeUsuario = "se ha presentado un problema tratando de modificar un Servicio";
+		        var mensajeTecnico = "Se ha presentado un problema de tipo SQLException en el método modificar de la clase ServicioAzureSqlDAO tratando de llevar a cabo la modificación de Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
 		        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 		    } catch (final Exception excepcion) {
-		        var mensajeUsuario = "se ha presentado un problema tratando de modificar una Ciudad";
-		        var mensajeTecnico = "Se ha presentado un problema de tipo Exception en el método modificar de la clase CiudadAzureSqlDAO tratando de llevar a cabo la modificación del Ciudad \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+		        var mensajeUsuario = "se ha presentado un problema tratando de modificar un Servicio";
+		        var mensajeTecnico = "Se ha presentado un problema de tipo Exception en el método modificar de la clase ServicioAzureSqlDAO tratando de llevar a cabo la modificación de Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
 		        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 		    }
 		
@@ -116,13 +116,13 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 				        }				
 				}
 				 catch (final SQLException excepcion) {
-			        var mensajeUsuario = "Se ha presentado un problema tratando de consultar las ciudades...";
-			        var mensajeTecnico = "Se ha presentado un problema de tipo SQLException en el método consultar de la clase CiudadAzureSqlDAO tratando de realizar la consulta de ciudades \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+			        var mensajeUsuario = "Se ha presentado un problema tratando de consultar los servicios...";
+			        var mensajeTecnico = "Se ha presentado un problema de tipo SQLException en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
 			        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 			    } 
 				catch (final Exception excepcion) {
-			        var mensajeUsuario = "Se ha presentado un problema tratando de consultar las ciudades...";
-			        var mensajeTecnico = "Se ha presentado un problema de tipo Exception en el método consultar de la clase CiudadAzureSqlDAO tratando de realizar la consulta de ciudades \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+			        var mensajeUsuario = "Se ha presentado un problema tratando de consultar los servicios...";
+			        var mensajeTecnico = "Se ha presentado un problema de tipo Exception en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
 			        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 			    }
 			
