@@ -10,13 +10,16 @@ public final class DataSpaOnlineException extends SpaOnlineException{
 	public DataSpaOnlineException(String mensajeUsuario, String mensajeTecnico, Lugar lugar, Throwable excepcion) {
 		super(mensajeTecnico, mensajeUsuario, Lugar.DATA, excepcion);
 	}
+	
 	public DataSpaOnlineException(String mensajeUsuario, String mensajeTecnico) {
 		super(mensajeTecnico, mensajeUsuario,Lugar.DATA);
 	}
 	
-	public DataSpaOnlineException(String mensajeUsuario, String mensajeTecnico, Throwable excepcionRaiz) {
+	public DataSpaOnlineException(String mensajeUsuario, String mensajeTecnico , Throwable excepcionRaiz) {
 		super(mensajeTecnico, mensajeUsuario,Lugar.DATA, excepcionRaiz);
 	}
+
+	
 	public DataSpaOnlineException(String mensajeUsuario ) {
 		super(mensajeUsuario, Lugar.DATA);
 	}

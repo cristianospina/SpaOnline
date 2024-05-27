@@ -1,7 +1,7 @@
 package co.edu.uco.spaonline.crosscutting.helpers;
 
 import java.util.Objects;
-import java.util.UUID;
+
 
 public final class ObjectHelper {
 	public static final String VACIO="";

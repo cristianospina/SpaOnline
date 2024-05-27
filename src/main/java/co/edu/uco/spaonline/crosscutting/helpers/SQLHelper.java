@@ -14,7 +14,7 @@ public final class SQLHelper {
 	}
 
 	public static final boolean isNull(final Connection connection) {
-		return ObjectHelper.getObjectHelper().isNull(connection);
+		return ObjectHelper.isNull(connection);
 	}
 
 	public static final boolean isOpen(final Connection connection) {
