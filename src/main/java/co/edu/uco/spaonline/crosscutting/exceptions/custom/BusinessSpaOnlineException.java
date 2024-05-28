@@ -10,12 +10,12 @@ public class BusinessSpaOnlineException extends SpaOnlineException{
 	protected BusinessSpaOnlineException(String mensajeTecnico, String mensajeUsuario, Lugar lugar, Throwable excepcionRaiz) {
 		super(mensajeTecnico, mensajeUsuario, lugar, excepcionRaiz);
 	}
-	protected BusinessSpaOnlineException(String mensajeTecnico, String mensajeUsuario) {
+	
+	public BusinessSpaOnlineException(String mensajeTecnico, String mensajeUsuario) {
 		super(mensajeTecnico, mensajeUsuario, Lugar.BUSINESS);
 	}
+	
 	protected BusinessSpaOnlineException(String mensajeTecnico) {
 		super(mensajeTecnico, Lugar.BUSINESS);
 	}
-	
-
 }

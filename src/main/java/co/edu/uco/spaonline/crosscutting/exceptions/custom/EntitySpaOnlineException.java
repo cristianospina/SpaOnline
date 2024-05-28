@@ -10,6 +10,7 @@ public class EntitySpaOnlineException extends SpaOnlineException{
 	protected EntitySpaOnlineException(String mensajeTecnico, String mensajeUsuario, Lugar lugar, Throwable excepcionRaiz) {
 		super(mensajeTecnico, mensajeUsuario, lugar, excepcionRaiz);
 	}
+	
 	protected EntitySpaOnlineException(String mensajeTecnico, String mensajeUsuario) {
 		super(mensajeTecnico, mensajeUsuario,Lugar.ENTITY);
 	}
@@ -17,5 +18,4 @@ public class EntitySpaOnlineException extends SpaOnlineException{
 	protected EntitySpaOnlineException(String mensajeTecnico) {
 		super(mensajeTecnico, Lugar.ENTITY);
 	}
-
 }

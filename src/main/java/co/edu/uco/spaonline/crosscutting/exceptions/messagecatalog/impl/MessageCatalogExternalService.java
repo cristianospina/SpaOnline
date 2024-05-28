@@ -10,7 +10,6 @@ import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.data.CodigoMe
 import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.data.Mensaje;
 import co.edu.uco.spaonline.crosscutting.helpers.ObjectHelper;
 
-
 public final class MessageCatalogExternalService implements MessageCatalog {
 	
 	private final Map<String, Mensaje> mensajes = new HashMap<>();
@@ -18,8 +17,7 @@ public final class MessageCatalogExternalService implements MessageCatalog {
 	@Override
 	public void inicializar() {
 		mensajes.clear();
-		mensajes.put(CodigoMensaje.M00007.getIdentificador(), new Mensaje(CodigoMensaje.M00007, "La transaccion se ha completado de forma satisfactoria..."));
-		
+		mensajes.put(CodigoMensaje.M00007.getIdentificador(), new Mensaje(CodigoMensaje.M00007, "La transaccion se ha completado de forma satisfactoria..."));	
 	}
 
 	@Override

@@ -12,14 +12,18 @@ public class ControllerSpaOnlineException extends SpaOnlineException{
 		super(mensajeTecnico, mensajeUsuario, lugar, excepcionRaiz);
 	
 	}
+	
 	protected ControllerSpaOnlineException(String mensajeTecnico, String mensajeUsuario) {
 		super(mensajeTecnico, mensajeUsuario, Lugar.CONTROLLER);
+	
+	}
+	
+	protected ControllerSpaOnlineException(String mensajeTecnico, String mensajeUsuario, Throwable excepcionRaiz) {
+		super(mensajeTecnico, mensajeUsuario, Lugar.CONTROLLER, excepcionRaiz);
 	
 	}
 	
 	protected ControllerSpaOnlineException(String mensajeTecnico) {
 		super(mensajeTecnico, Lugar.CONTROLLER);
 	}
-	
-
 }

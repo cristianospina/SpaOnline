@@ -11,11 +11,14 @@ public class CrosscuttingSpaOnlineException extends SpaOnlineException {
 			Throwable excepcionRaiz) {
 		super(mensajeTecnico, mensajeUsuario, lugar, excepcionRaiz);
 	}
+	
 	public CrosscuttingSpaOnlineException(String mensajeTecnico, String mensajeUsuario) {
 		super(mensajeTecnico, mensajeUsuario, Lugar.CROSSCUTTING );
 	}
+	
 	public CrosscuttingSpaOnlineException(String mensajeTecnico, String mensajeUsuario , Throwable excepcionRaiz) {
 		super(mensajeTecnico, mensajeUsuario, Lugar.CROSSCUTTING , excepcionRaiz);
+
 	}
 	
 	public CrosscuttingSpaOnlineException(String mensajeTecnico) {
@@ -23,3 +26,4 @@ public class CrosscuttingSpaOnlineException extends SpaOnlineException {
 	}
 
 }
+

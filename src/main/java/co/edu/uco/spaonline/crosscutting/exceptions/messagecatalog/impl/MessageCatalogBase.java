@@ -9,6 +9,8 @@ import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.data.CodigoMe
 import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.data.Mensaje;
 import co.edu.uco.spaonline.crosscutting.helpers.ObjectHelper;
 
+
+
 public final class MessageCatalogBase  implements MessageCatalog{
 
 	private final Map<String, Mensaje> mensajes = new HashMap<>();
@@ -55,10 +57,42 @@ public final class MessageCatalogBase  implements MessageCatalog{
 				"Se ha presentado un problema INESPERADO tratando de cancelar una transacción SQL con la fuente de información deseada..."));
 		mensajes.put(CodigoMensaje.M00020.getIdentificador(), new Mensaje(CodigoMensaje.M00020,
 				"Se ha intentado iniciar una transacción con una conexión SQL cerrada..."));
-		mensajes.put(CodigoMensaje.M00021.getIdentificador(), new Mensaje(CodigoMensaje.M00022,
+		mensajes.put(CodigoMensaje.M00021.getIdentificador(), new Mensaje(CodigoMensaje.M00021,
 				"Se ha presentado un problema tratando de iniciar una transacción SQL con la fuente de información deseada..."));
 		mensajes.put(CodigoMensaje.M00022.getIdentificador(), new Mensaje(CodigoMensaje.M00022,
-				"Se ha presentado un problema INESPERADO tratando de iniciar una transacción SQL con la fuente de información deseada..."));
+				"Se ha presentado un problema INESPERADO tratando de iniciar una transacción SQL con la fuente de información deseada..."));
+		mensajes.put(CodigoMensaje.M00023.getIdentificador(), new Mensaje(CodigoMensaje.M00023,
+				"No es posible crear el DAO deseado con una conexion cerrada"));
+		mensajes.put(CodigoMensaje.M00024.getIdentificador(), new Mensaje(CodigoMensaje.M00024,
+				"Se ha presentado un problema tratando de consultar los servicios..."));
+		mensajes.put(CodigoMensaje.M00025.getIdentificador(), new Mensaje(CodigoMensaje.M00025,
+				"Se ha presentado un problema de tipo SQLException en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00026.getIdentificador(), new Mensaje(CodigoMensaje.M00026,
+				"Se ha presentado un problema de tipo Exception en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00027.getIdentificador(), new Mensaje(CodigoMensaje.M00027,
+				"Se ha presentado un problema tratando de crear el servicio \\\"${1}\\\". Por favor intente de nuevo y si el problema persiste contacte al administrador"));
+		mensajes.put(CodigoMensaje.M00028.getIdentificador(), new Mensaje(CodigoMensaje.M00028,
+				"Se ha presentado una excepcion de tipo SQL exception tratando realizar  el insert de los servicios \\\"${1}\\\" en la tabla \\\"Servicios\\\" de la tabla AzureSQL, para mas detalles, revise de forma completa la excepcion raíz presentada..."));
+		mensajes.put(CodigoMensaje.M00029.getIdentificador(), new Mensaje(CodigoMensaje.M00029,
+				"Se ha presentado  un problema INESPERADO con una excepcion de tipo SQL exception tratando realizar  el insert de los servicios \\\"${1}\\\" en la tabla \\\"Servicios\\\" de la tabla AzureSQL, para mas detalles, revise de forma completa la excepcion raíz presentada..."));
+		mensajes.put(CodigoMensaje.M00030.getIdentificador(), new Mensaje(CodigoMensaje.M00030,
+				"Se ha presentado un problema tratando de crear los servicios"));
+		mensajes.put(CodigoMensaje.M00031.getIdentificador(), new Mensaje(CodigoMensaje.M00031,
+				"Se ha presentado un problema tratando de eliminar los servicios"));
+		mensajes.put(CodigoMensaje.M00032.getIdentificador(), new Mensaje(CodigoMensaje.M00032,
+				"Se ha presentado un problema tratando de modificar los servicios"));
+		mensajes.put(CodigoMensaje.M00033.getIdentificador(), new Mensaje(CodigoMensaje.M00033,
+				"Se ha presentado un problema de tipo SQLException en el método crear de la clase ServicioAzureSqlDAO tratando de realizar la creacion de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00034.getIdentificador(), new Mensaje(CodigoMensaje.M00034,
+				"Se ha presentado un problema de tipo SQLException en el método eliminar de la clase ServicioAzureSqlDAO tratando de realizar la eliminacion de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00035.getIdentificador(), new Mensaje(CodigoMensaje.M00035,
+				"Se ha presentado un problema de tipo SQLException en el método modificar de la clase ServicioAzureSqlDAO tratando de realizar la modificacion de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00036.getIdentificador(), new Mensaje(CodigoMensaje.M00036,
+				"Se ha presentado un problema de tipo Exception en el método crear de la clase ServicioAzureSqlDAO tratando de realizar la creacion de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00037.getIdentificador(), new Mensaje(CodigoMensaje.M00037,
+				"Se ha presentado un problema de tipo Exception en el método eliminar de la clase ServicioAzureSqlDAO tratando de realizar la eliminacion de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00038.getIdentificador(), new Mensaje(CodigoMensaje.M00038,
+				"Se ha presentado un problema de tipo Exception en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
 	}
 
 	@Override

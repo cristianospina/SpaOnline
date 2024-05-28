@@ -9,6 +9,5 @@ public interface MessageCatalog {
 	
 	String obtenerContenidoMensaje(final CodigoMensaje codigo, String...parametros);
 	
-	Mensaje obtenerMensaje(final CodigoMensaje codigo, String...parametros);
-	
+	Mensaje obtenerMensaje(final CodigoMensaje codigo, String...parametros);	
 }

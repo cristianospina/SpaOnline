@@ -12,13 +12,12 @@ public class DTOSpaOnlineException extends SpaOnlineException{
 		super(mensajeTecnico, mensajeUsuario, lugar, excepcionRaiz);
 		
 	}
+	
 	protected DTOSpaOnlineException(String mensajeTecnico, String mensajeUsuario) {
-		super(mensajeTecnico, mensajeUsuario, Lugar.DTO);
-		
+		super(mensajeTecnico, mensajeUsuario, Lugar.DTO);	
 	}
+	
 	protected DTOSpaOnlineException(String mensajeTecnico) {
 		super(mensajeTecnico, Lugar.DTO);
-		
 	}
-
 }

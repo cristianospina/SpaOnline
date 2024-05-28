@@ -23,5 +23,4 @@ public final class DataSpaOnlineException extends SpaOnlineException{
 	public DataSpaOnlineException(String mensajeUsuario ) {
 		super(mensajeUsuario, Lugar.DATA);
 	}
-
 }

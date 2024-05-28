@@ -11,6 +11,7 @@ public class InitializerSpaOnlineException extends SpaOnlineException {
 			Throwable excepcionRaiz) {
 		super(mensajeTecnico, mensajeUsuario, lugar, excepcionRaiz);
 	}
+	
 	protected InitializerSpaOnlineException(String mensajeTecnico, String mensajeUsuario) {
 		super(mensajeTecnico, mensajeUsuario, Lugar.INITIALIZER);
 	}
@@ -18,5 +19,4 @@ public class InitializerSpaOnlineException extends SpaOnlineException {
 	protected InitializerSpaOnlineException(String mensajeTecnico) {
 		super(mensajeTecnico, Lugar.INITIALIZER);
 	}
-	
 }
