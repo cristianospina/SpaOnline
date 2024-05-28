@@ -20,4 +20,7 @@ public final  class NumHelper {
 	public static final Long getDefaultValue(final Long numero) {
 		return getDefaultValue(numero, NUM_DEFECT); 
 	}
+	public static final boolean isDefaultValue (final Long num) {
+		return num == NUM_DEFECT;
+	}
 }

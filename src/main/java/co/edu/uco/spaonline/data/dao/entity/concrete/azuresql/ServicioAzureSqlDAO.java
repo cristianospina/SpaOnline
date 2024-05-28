@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 
 import co.edu.uco.spaonline.crosscutting.exceptions.custom.DataSpaOnlineException;
+import co.edu.uco.spaonline.crosscutting.helpers.NumHelper;
 import co.edu.uco.spaonline.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.spaonline.crosscutting.helpers.TextHelper;
 import co.edu.uco.spaonline.crosscutting.helpers.UUIDHelper;
@@ -65,8 +66,8 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 		final StringBuilder sentenciaSql = new StringBuilder();
 		
 			sentenciaSql.append("UPDATE Servicio ");
-			sentenciaSql.append ("SET nombre = ? , departamento = ? , descripcion = ? , tiposervicio = ? , tarifa = ? ");
-			sentenciaSql.append ("WHERE id = ?");
+			sentenciaSql.append ("SET nombre = ? , descripcion = ? , tiposervicio = ? , tarifa = ? ");
+			sentenciaSql.append ("WHERE id = ? ");
 			
 			try(final var sentenciaPreparada = getConexion().prepareStatement(sentenciaSql.toString()) ) {
 		        
@@ -104,14 +105,14 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 				        try (final ResultSet resultadoConsulta = sentenciaPreparada.executeQuery()) {
 		
 				            while (resultadoConsulta.next()) {
-				            	ServicioEntity ciudad = new ServicioEntity();
-				                ciudad.setId( UUIDHelper.convertToUUID(resultadoConsulta.getString("id")) );
-				                ciudad.setNombre(resultadoConsulta.getString("nombre"));
-				                ciudad.setDescipcion(resultadoConsulta.getString("descripcion"));
-				                ciudad.setTiposervicio(resultadoConsulta.getString("tiposervicio"));
-				                ciudad.setTarifa(resultadoConsulta.getLong("tarifa"));
+				            	ServicioEntity servicio = new ServicioEntity();
+				            	servicio.setId( UUIDHelper.convertToUUID(resultadoConsulta.getString("id")) );
+				            	servicio.setNombre(resultadoConsulta.getString("nombre"));
+				            	servicio.setDescipcion(resultadoConsulta.getString("descripcion"));
+				            	servicio.setTiposervicio(resultadoConsulta.getString("tiposervicio"));
+				            	servicio.setTarifa(resultadoConsulta.getLong("tarifa"));
 				                
-				                resultado.add(ciudad);
+				                resultado.add(servicio);
 				            }
 				        }				
 				}
@@ -135,12 +136,12 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 			}
 			
 		}catch(final SQLException excepcion) {
-			var mensajeUsuario = "Se ha presentado un problema tratando de consultar las ciudades...";
+			var mensajeUsuario = "Se ha presentado un problema tratando de consultar los servicio...";
 			var mensajeTecnico = "Se ha presentado un problema de tipo SQLEXCEPTION tratando de colocar los parametros de consulta";
 			throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 		}
 		catch(final Exception excepcion) {
-			var mensajeUsuario = "Se ha presentado un problema INESPERADO tratando de consultar las ciudades...";
+			var mensajeUsuario = "Se ha presentado un problema INESPERADO tratando de consultar los servicios...";
 			var mensajeTecnico =  "Se ha presentado un problema de tipo Exception tratandode colocar los parametros de consulta...";
 			throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 		}
@@ -173,7 +174,7 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 				operadorCondicional = " AND";
 				parametros.add(data.getTiposervicio());
 			}
-			if(!ObjectHelper.isNull(data.getTarifa())) {
+			if(!ObjectHelper.isNull(data.getTarifa())&& !NumHelper.isDefaultValue(data.getTarifa())) {
 				sentenciaSql.append(operadorCondicional).append(" tarifa = ? ");
 				parametros.add(data.getTarifa());
 			}

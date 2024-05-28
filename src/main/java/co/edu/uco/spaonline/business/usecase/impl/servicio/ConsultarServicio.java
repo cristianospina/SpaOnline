@@ -31,6 +31,7 @@ public class ConsultarServicio implements UseCaseWithReturn<ServicioDomain, List
 		validarCiudadMismoNombreMismoTipoServicio(data.getNombre(), data.getTiposervicio());
 		var servicioEntityfilter= ServicioAssemblerEntity.getinstace().toEntity(data);
 		var resultadosEntity = factory.getServicioDAO().consultar(servicioEntityfilter);
+		
 		return ServicioAssemblerEntity.getinstace().toDomainCollection(resultadosEntity);
 	}
 	
