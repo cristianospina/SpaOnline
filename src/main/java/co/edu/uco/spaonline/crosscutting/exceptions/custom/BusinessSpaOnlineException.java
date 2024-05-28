@@ -15,7 +15,7 @@ public class BusinessSpaOnlineException extends SpaOnlineException{
 		super(mensajeTecnico, mensajeUsuario, Lugar.BUSINESS);
 	}
 	
-	protected BusinessSpaOnlineException(String mensajeTecnico) {
+	public BusinessSpaOnlineException(String mensajeTecnico) {
 		super(mensajeTecnico, Lugar.BUSINESS);
 	}
 }

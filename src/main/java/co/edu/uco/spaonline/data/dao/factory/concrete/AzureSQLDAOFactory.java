@@ -21,7 +21,7 @@ public final class AzureSQLDAOFactory extends SqlConnection implements DAOFactor
 	}
 
 	public void abrirConexion() {
-		final String connectionUrl = " ";
+		final String connectionUrl = "jdbc:sqlserver://spaonline-server.database.windows.net:1433;database=SpaOnline;user=administrador@spaonline-server;password=Mateoandres12353;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 		try {
 			setConexion(DriverManager.getConnection(connectionUrl));
 		} catch (final SQLException excepcion) {
