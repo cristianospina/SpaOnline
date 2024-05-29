@@ -47,7 +47,7 @@ public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 		if(!ObjectHelper.esNulooVacio(dato)) {
 			validarLongitud(dato.getNombre());
 			validarObligatoriedad(dato.getNombre());
-			validarFormato(dato.getNombre());
+			//validarFormato(dato.getNombre());
 		}
 		if(!UUIDHelper.isNull(dato.getId())) {
 			String uuidString = dato.getId().toString();
