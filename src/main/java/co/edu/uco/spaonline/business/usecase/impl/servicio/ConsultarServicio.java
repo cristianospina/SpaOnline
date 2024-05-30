@@ -19,8 +19,8 @@ public class ConsultarServicio implements UseCaseWithReturn<ServicioDomain, List
 	
 	public ConsultarServicio (final DAOFactory factory){
 		 if(ObjectHelper.isNull(factory)) {
-			 var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00047);
-			 var mensajeTecnico= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00048);
+			 var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00051);
+			 var mensajeTecnico= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00052);
 			 throw new BusinessSpaOnlineException(mensajeUsuario, mensajeTecnico);
 		 }
 		 this.factory = factory;
@@ -28,18 +28,18 @@ public class ConsultarServicio implements UseCaseWithReturn<ServicioDomain, List
 	@Override
 	public List<ServicioDomain> execute(ServicioDomain data) {
 		validarIntegridadDato(data);
-		validarCiudadMismoNombreMismoTipoServicio(data.getNombre(), data.getTiposervicio());
+		validarServicioMismoNombreMismoTipoServicio(data.getNombre(), data.getTiposervicio());
 		var servicioEntityfilter= ServicioAssemblerEntity.getinstace().toEntity(data);
 		var resultadosEntity = factory.getServicioDAO().consultar(servicioEntityfilter);
 		
 		return ServicioAssemblerEntity.getinstace().toDomainCollection(resultadosEntity);
 	}
 	
-	private final void validarCiudadMismoNombreMismoTipoServicio (final String nombreCiudad, final String tipoServicio){
+	private final void validarServicioMismoNombreMismoTipoServicio (final String nombreCiudad, final String tipoServicio){
 		var servicioEntity = ServicioEntity.build().setNombre(nombreCiudad).setTiposervicio(tipoServicio);
 		var resultados = factory.getServicioDAO().consultar(servicioEntity);
 		if(resultados.isEmpty()) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00049);
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00053);
 			throw new BusinessSpaOnlineException(mensajeUsuario);
 		}
 	}
@@ -52,7 +52,7 @@ public class ConsultarServicio implements UseCaseWithReturn<ServicioDomain, List
 	
 	private final void validarLongitud(final String dato) {
 		if(!TextHelper.longitudMaximaValida(dato,50)) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00050);
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00054);
 			throw new BusinessSpaOnlineException(mensajeUsuario);
 		}
 	}

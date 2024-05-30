@@ -26,12 +26,12 @@ public final class AzureSQLDAOFactory extends SqlConnection implements DAOFactor
 			setConexion(DriverManager.getConnection(connectionUrl));
 		} catch (final SQLException excepcion) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002);
-			var mensajeTecnico = "Se ha presentado un problema tratando de obtener la conexión con la base de datos ";
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00080);
 
 			throw new DataSpaOnlineException(mensajeTecnico, mensajeUsuario, excepcion);
 		} catch (final Exception excepcion) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00002);
-			var mensajeTecnico = "Se ha presentado un problema INESPERADO tratando de obtener la conexión con la base de datos ";
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00081);
 
 			throw new DataSpaOnlineException(mensajeTecnico, mensajeUsuario, excepcion);
 		}

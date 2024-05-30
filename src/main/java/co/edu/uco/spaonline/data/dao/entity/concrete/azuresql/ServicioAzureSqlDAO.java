@@ -10,6 +10,8 @@ import java.sql.SQLException;
 
 
 import co.edu.uco.spaonline.crosscutting.exceptions.custom.DataSpaOnlineException;
+import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
+import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.edu.uco.spaonline.crosscutting.helpers.NumHelper;
 import co.edu.uco.spaonline.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.spaonline.crosscutting.helpers.TextHelper;
@@ -44,17 +46,15 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 			sentenciaSqlPreparada.executeUpdate();
 			
 		} catch(SQLException exception) {
-			var mensajeUsuario = "Se ha presentado un error al intentar crear un servicio, por favor intentarlo más tardes...";
-			var mensajeTecnico = "Se ha presentado un error de tipo SQLException tratando de crear un nuevo servicio";
-			//var mensajeUsuario = TextHelper.reemplazarParametro(MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00030), exception) ;
-			//var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00031);
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00063);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00064);
+
 			throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, exception);
 		}
 		catch(Exception exception) {
-			var mensajeUsuario = "Se ha presentado un error INESPERADO al intentar crear un servicio, por favor intentarlo más tardes...";
-			var mensajeTecnico = "Se ha presentado un error de tipo Exception tratando de crear un nuevo servicio";
-			//var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00030);
-			//var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00032);
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00065);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00066);
+
 			throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, exception);
 		}
 		
@@ -81,12 +81,12 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 		        sentenciaPreparada.executeUpdate();
 		    }
 		    catch(final SQLException excepcion){
-		        var mensajeUsuario = "se ha presentado un problema tratando de modificar un Servicio";
-		        var mensajeTecnico = "Se ha presentado un problema de tipo SQLException en el método modificar de la clase ServicioAzureSqlDAO tratando de llevar a cabo la modificación de Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+		        var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00067);
+		        var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00068);
 		        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 		    } catch (final Exception excepcion) {
-		        var mensajeUsuario = "se ha presentado un problema tratando de modificar un Servicio";
-		        var mensajeTecnico = "Se ha presentado un problema de tipo Exception en el método modificar de la clase ServicioAzureSqlDAO tratando de llevar a cabo la modificación de Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+		        var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00069);
+		        var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00070);
 		        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 		    }
 		
@@ -117,13 +117,13 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 				        }				
 				}
 				 catch (final SQLException excepcion) {
-			        var mensajeUsuario = "Se ha presentado un problema tratando de consultar los servicios...";
-			        var mensajeTecnico = "Se ha presentado un problema de tipo SQLException en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+			        var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00071);
+			        var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00072);
 			        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 			    } 
 				catch (final Exception excepcion) {
-			        var mensajeUsuario = "Se ha presentado un problema tratando de consultar los servicios...";
-			        var mensajeTecnico = "Se ha presentado un problema de tipo Exception en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+			        var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00071);
+			        var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00074);
 			        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 			    }
 			
@@ -136,13 +136,13 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 			}
 			
 		}catch(final SQLException excepcion) {
-			var mensajeUsuario = "Se ha presentado un problema tratando de consultar los servicio...";
-			var mensajeTecnico = "Se ha presentado un problema de tipo SQLEXCEPTION tratando de colocar los parametros de consulta";
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00071);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00073);
 			throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 		}
 		catch(final Exception excepcion) {
-			var mensajeUsuario = "Se ha presentado un problema INESPERADO tratando de consultar los servicios...";
-			var mensajeTecnico =  "Se ha presentado un problema de tipo Exception tratandode colocar los parametros de consulta...";
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00075);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00076);
 			throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 		}
 	}
@@ -197,14 +197,13 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 	        sentenciaPreparada.setObject(1,id);
 	        sentenciaPreparada.executeUpdate();
 	    } catch (final SQLException excepcion) {
-	        var mensajeUsuario = "Se ha presentado un problema tratando de eliminar la información del servicio...";
-	        var mensajeTecnico = "Se ha presentado un problema de tipo SQLException en el método eliminar de la clase ServicioAzureSqlDAO tratando de eliminar el Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+	        var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00077);
+	        var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00078);
 	        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 	    } catch (final Exception excepcion) {
-	        var mensajeUsuario = "Se ha presentado un problema tratando de eliminar la información del cliente...";
-	        var mensajeTecnico = "Se ha presentado un problema de tipo Exception en el método eliminar de la clase ServicioAzureSqlDAO tratando de eliminar el Servicio \"${1}\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió...";
+	        var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00077);
+	        var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00079);
 	        throw new DataSpaOnlineException(mensajeUsuario, mensajeTecnico, excepcion);
 	    }
 	}
-
 }

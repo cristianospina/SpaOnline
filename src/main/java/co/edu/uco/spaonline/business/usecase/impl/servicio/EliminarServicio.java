@@ -20,8 +20,8 @@ public class EliminarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 	
 	public EliminarServicio (final DAOFactory factory){
 		 if(ObjectHelper.isNull(factory)) {
-			 var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00052);
-			 var mensajeTecnico= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00053);
+			 var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00055);
+			 var mensajeTecnico= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00056);
 			 throw new BusinessSpaOnlineException(mensajeUsuario, mensajeTecnico);
 		 }
 		 this.factory = factory;
