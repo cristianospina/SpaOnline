@@ -14,7 +14,7 @@ public final class ServicioDTO {
 	private ServicioDTO() {
 		super();
 	}
-
+	
 	private ServicioDTO(final UUID id,final String nombre,final String descipcion,final String tiposervicio,final Long tarifa) {
 		setId(id);
 		setNombre(nombre);
@@ -23,6 +23,7 @@ public final class ServicioDTO {
 		setTarifa(tarifa);
 	}
 	
+
 	public static final ServicioDTO build() {
 		return new ServicioDTO();
 	}

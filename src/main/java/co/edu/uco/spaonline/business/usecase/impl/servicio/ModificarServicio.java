@@ -69,12 +69,20 @@ public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 		}
 	}
 
+<<<<<<< HEAD
 	private final void validarFormato(final String dato) {
+=======
+	public final void validarFormato(final String dato) {
+>>>>>>> b078e20899678e9637ff24ed4a5a151238f95159
 		if(!TextHelper.contieneSoloLetras(dato)) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00060);
 			throw new BusinessSpaOnlineException(mensajeUsuario);
 		}
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> b078e20899678e9637ff24ed4a5a151238f95159
 	public static boolean validarUUID(String s) {
         try {
             UUID.fromString(s);
