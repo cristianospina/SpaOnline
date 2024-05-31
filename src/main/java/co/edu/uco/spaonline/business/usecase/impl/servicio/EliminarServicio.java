@@ -29,6 +29,7 @@ public class EliminarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 	@Override
 	public void execute(ServicioDomain Data) {
 		validarIntegridadDato(Data);
+		validarServicioExista(Data);
 		var ciudadEntity = ServicioEntity.build().setId(Data.getId());
 		factory.getServicioDAO().eliminar(ciudadEntity.getId());
 		
@@ -50,4 +51,20 @@ public class EliminarServicio implements UseCaseWithoutReturn<ServicioDomain>{
             return false;
         }
     }
+	private final void validarServicioExista (final ServicioDomain data){
+		var servicioEntity = ServicioEntity.build().setId(data.getId());
+		var resultados = factory.getServicioDAO().consultar(servicioEntity);
+		
+		 boolean encontrado = false;
+	        for (ServicioEntity datoServicio : resultados) {
+	            if (datoServicio.getId().equals(data.getId())) {
+	                encontrado = true;
+	                break;
+	            }
+	        }
+		if(!encontrado) {
+			var mensajeUsuario = "El servicio que desea eliminar no se ha encontrado, por favor validar de nuevo";
+			throw new BusinessSpaOnlineException(mensajeUsuario);
+		}
+	}
 }

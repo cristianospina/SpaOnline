@@ -47,7 +47,6 @@ public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 		if(!ObjectHelper.esNulooVacio(dato)) {
 			validarLongitud(dato.getNombre());
 			validarObligatoriedad(dato.getNombre());
-			//validarFormato(dato.getNombre());
 		}
 		if(!UUIDHelper.isNull(dato.getId())) {
 			String uuidString = dato.getId().toString();
@@ -69,12 +68,7 @@ public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 			throw new BusinessSpaOnlineException(mensajeUsuario);
 		}
 	}
-	private final void validarFormato(final String dato) {
-		if(!TextHelper.contieneSoloLetras(dato)) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00058);
-			throw new BusinessSpaOnlineException(mensajeUsuario);
-		}
-	}
+
 	public static boolean validarUUID(String s) {
         try {
             UUID.fromString(s);

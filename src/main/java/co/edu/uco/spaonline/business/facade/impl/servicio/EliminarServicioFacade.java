@@ -28,6 +28,9 @@ public class EliminarServicioFacade implements FacadeWithoutReturn<ServicioDTO> 
 			useCase.execute(ciudadDomain);
 			
 			daoFactory.confirmarTransaccion();
+		}catch(final BusinessSpaOnlineException exception) {
+			daoFactory.cancelarTransaccion();
+			throw exception;
 		}catch(final SpaOnlineException exception) {
 			daoFactory.cancelarTransaccion();
 			throw exception;
