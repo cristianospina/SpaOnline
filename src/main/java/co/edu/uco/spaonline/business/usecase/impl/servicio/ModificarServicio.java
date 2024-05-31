@@ -20,8 +20,8 @@ public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 	
 	public ModificarServicio (final DAOFactory factory){
 		 if(ObjectHelper.isNull(factory)) {
-			 var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00051);
-			 var mensajeTecnico= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00054);
+			 var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00057);
+			 var mensajeTecnico= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00058);
 			 throw new BusinessSpaOnlineException(mensajeUsuario, mensajeTecnico);
 		 }
 		 this.factory = factory;
@@ -29,16 +29,16 @@ public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 	@Override
 	public void execute(ServicioDomain Data) {
 		validarIntegridadDato(Data);
-		validarCiudadMismoNombreMismoTipoServicio(Data.getNombre(), Data.getTiposervicio());
+		validarServicioMismoNombreMismoTipoServicio(Data.getNombre(), Data.getTiposervicio());
 		var servicioEntity = ServicioEntity.build().setId(Data.getId()).setNombre(Data.getNombre()).setDescipcion(Data.getDescipcion()).setTiposervicio(Data.getTiposervicio()).setTarifa(Data.getTarifa());
 		factory.getServicioDAO().modificar(servicioEntity);
 		
 	}
-	private final void validarCiudadMismoNombreMismoTipoServicio (final String nombreServicio, final String TipoServicio){
+	private final void validarServicioMismoNombreMismoTipoServicio (final String nombreServicio, final String TipoServicio){
 		var servicioEntity = ServicioEntity.build().setNombre(nombreServicio).setTiposervicio(TipoServicio);
 		var resultados = factory.getServicioDAO().consultar(servicioEntity);
 		if(!resultados.isEmpty()) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00055);
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00053);
 			throw new BusinessSpaOnlineException(mensajeUsuario);
 		}
 	}
@@ -58,17 +58,26 @@ public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 	
 	private final void validarLongitud(final String dato) {
 		if(!TextHelper.longitudMaximaValida(dato,50)) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00056);
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00054);
 			throw new BusinessSpaOnlineException(mensajeUsuario);
 		}
 	}
 	private final void validarObligatoriedad(final String dato) {
 		if(TextHelper.isNull(dato)) {
-			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00057);
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00059);
 			throw new BusinessSpaOnlineException(mensajeUsuario);
 		}
 	}
+<<<<<<< HEAD
 
+=======
+	private final void validarFormato(final String dato) {
+		if(!TextHelper.contieneSoloLetras(dato)) {
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00060);
+			throw new BusinessSpaOnlineException(mensajeUsuario);
+		}
+	}
+>>>>>>> 1ddf994ea09fa48c58c8c9b079d21c069688a016
 	public static boolean validarUUID(String s) {
         try {
             UUID.fromString(s);

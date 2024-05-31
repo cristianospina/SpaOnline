@@ -93,6 +93,92 @@ public final class MessageCatalogBase  implements MessageCatalog{
 				"Se ha presentado un problema de tipo Exception en el método eliminar de la clase ServicioAzureSqlDAO tratando de realizar la eliminacion de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
 		mensajes.put(CodigoMensaje.M00038.getIdentificador(), new Mensaje(CodigoMensaje.M00038,
 				"Se ha presentado un problema de tipo Exception en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de servicios \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00039.getIdentificador(), new Mensaje(CodigoMensaje.M00039,
+				"Se ha presentado un problema intentando consultar un servicio"));
+		mensajes.put(CodigoMensaje.M00040.getIdentificador(), new Mensaje(CodigoMensaje.M00040,
+				"Se ha presentado un problema intentando registrar un Servicio"));
+		mensajes.put(CodigoMensaje.M00041.getIdentificador(), new Mensaje(CodigoMensaje.M00041,
+				"Se ha presentado un problema intentando Eliminar un servicio"));
+		mensajes.put(CodigoMensaje.M00042.getIdentificador(), new Mensaje(CodigoMensaje.M00042,
+				"Se ha presentado un problema intentando modificar un servicio"));
+		mensajes.put(CodigoMensaje.M00043.getIdentificador(), new Mensaje(CodigoMensaje.M00043,
+				"Se ha presentado un problema tratando de consultar la informacion de Servicio"));
+		mensajes.put(CodigoMensaje.M00044.getIdentificador(), new Mensaje(CodigoMensaje.M00044,
+				"Se ha presentado un problema INESPERADO tratando de consultar la informacion de Servicio"));
+		mensajes.put(CodigoMensaje.M00045.getIdentificador(), new Mensaje(CodigoMensaje.M00045,
+				"Se ha presentado un problema tratando de ingresar la informacion de servicio"));
+		mensajes.put(CodigoMensaje.M00046.getIdentificador(), new Mensaje(CodigoMensaje.M00046,
+				"Se ha presentado un problema INESPERADO tratando de ingresar la informacion de servicio"));
+		mensajes.put(CodigoMensaje.M00047.getIdentificador(), new Mensaje(CodigoMensaje.M00047,
+				"Se ha presentado un problema tratando de modificar la informacion de servicio"));
+		mensajes.put(CodigoMensaje.M00048.getIdentificador(), new Mensaje(CodigoMensaje.M00048,
+				"Se ha presentado un problema INESPERADO tratando de modificar la informacion de servicio"));
+		mensajes.put(CodigoMensaje.M00049.getIdentificador(), new Mensaje(CodigoMensaje.M00049,
+				"Se ha presentado un problema tratando de ingresar la informacion de la servicio"));
+		mensajes.put(CodigoMensaje.M00050.getIdentificador(), new Mensaje(CodigoMensaje.M00050,
+				"Se ha presentado un problema INESPERADO tratando de ingresar la informacion de la servicio"));
+		mensajes.put(CodigoMensaje.M00051.getIdentificador(), new Mensaje(CodigoMensaje.M00051,
+				"Se ha presentado un problema tratando de consultar la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00052.getIdentificador(), new Mensaje(CodigoMensaje.M00052,
+				"Se ha presentado un problema INESPERADO tratando de consultar la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00053.getIdentificador(), new Mensaje(CodigoMensaje.M00053,
+				"Se ha presentado un problema tratando de validar la informacion de los servicios con el tiposervicio"));
+		mensajes.put(CodigoMensaje.M00054.getIdentificador(), new Mensaje(CodigoMensaje.M00054,
+				"Se ha presentado un problema tratando de validar la longitud"));
+		mensajes.put(CodigoMensaje.M00055.getIdentificador(), new Mensaje(CodigoMensaje.M00055,
+				"Se ha presentado un problema tratando de eliminar la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00056.getIdentificador(), new Mensaje(CodigoMensaje.M00056,
+				"Se ha presentado un problema INESPERADO tratando de eliminar la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00057.getIdentificador(), new Mensaje(CodigoMensaje.M00057,
+				"Se ha presentado un problema tratando de modificar la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00058.getIdentificador(), new Mensaje(CodigoMensaje.M00058,
+				"Se ha presentado un problema INESPERADO tratando de modificar la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00059.getIdentificador(), new Mensaje(CodigoMensaje.M00059,
+				"Se ha presentado un problema tratando de validar la obligatoriedad de la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00060.getIdentificador(), new Mensaje(CodigoMensaje.M00060,
+				"Se ha presentado un problema tratando de validar el formato la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00061.getIdentificador(), new Mensaje(CodigoMensaje.M00061,
+				"Se ha presentado un problema tratando de registrar la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00062.getIdentificador(), new Mensaje(CodigoMensaje.M00062,
+				"Se ha presentado un problema INESPERADO tratando de registrar la informacion de los servicios"));
+		mensajes.put(CodigoMensaje.M00063.getIdentificador(), new Mensaje(CodigoMensaje.M00063,
+				"Se ha presentado un error al intentar crear un servicio, por favor intentarlo más tardes..."));
+		mensajes.put(CodigoMensaje.M00064.getIdentificador(), new Mensaje(CodigoMensaje.M00064,
+				"Se ha presentado un error de tipo SQLException tratando de crear un nuevo servicio"));
+		mensajes.put(CodigoMensaje.M00065.getIdentificador(), new Mensaje(CodigoMensaje.M00065,
+				"Se ha presentado un error INESPERADO al intentar crear un servicio, por favor intentarlo más tardes..."));
+		mensajes.put(CodigoMensaje.M00066.getIdentificador(), new Mensaje(CodigoMensaje.M00066,
+				"Se ha presentado un error de tipo Exception tratando de crear un nuevo servicio"));
+		mensajes.put(CodigoMensaje.M00067.getIdentificador(), new Mensaje(CodigoMensaje.M00067,
+				"se ha presentado un problema tratando de modificar un Servicio"));
+		mensajes.put(CodigoMensaje.M00068.getIdentificador(), new Mensaje(CodigoMensaje.M00068,
+				"Se ha presentado un problema de tipo SQLException en el método modificar de la clase ServicioAzureSqlDAO tratando de llevar a cabo la modificación de Servicio \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00069.getIdentificador(), new Mensaje(CodigoMensaje.M00069,
+				"Sse ha presentado un problema tratando de modificar un Servicio"));
+		mensajes.put(CodigoMensaje.M00070.getIdentificador(), new Mensaje(CodigoMensaje.M00070,
+				"Se ha presentado un problema de tipo Exception en el método modificar de la clase ServicioAzureSqlDAO tratando de llevar a cabo la modificación de Servicio \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00071.getIdentificador(), new Mensaje(CodigoMensaje.M00071,
+				"Se ha presentado un problema tratando de consultar los servicios..."));
+		mensajes.put(CodigoMensaje.M00072.getIdentificador(), new Mensaje(CodigoMensaje.M00072,
+				"Se ha presentado un problema de tipo SQLException en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de Servicio \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00073.getIdentificador(), new Mensaje(CodigoMensaje.M00073,
+				"Se ha presentado un problema de tipo SQLEXCEPTION tratando de colocar los parametros de consulta"));
+		mensajes.put(CodigoMensaje.M00074.getIdentificador(), new Mensaje(CodigoMensaje.M00074,
+				"Se ha presentado un problema de tipo Exception en el método consultar de la clase ServicioAzureSqlDAO tratando de realizar la consulta de Servicio \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00075.getIdentificador(), new Mensaje(CodigoMensaje.M00075,
+				"Se ha presentado un problema INESPERADO tratando de consultar los servicios..."));
+		mensajes.put(CodigoMensaje.M00076.getIdentificador(), new Mensaje(CodigoMensaje.M00076,
+				"Se ha presentado un problema de tipo Exception tratandode colocar los parametros de consulta..."));
+		mensajes.put(CodigoMensaje.M00077.getIdentificador(), new Mensaje(CodigoMensaje.M00077,
+				"Se ha presentado un problema tratando de eliminar la información del servicio..."));
+		mensajes.put(CodigoMensaje.M00078.getIdentificador(), new Mensaje(CodigoMensaje.M00078,
+				"Se ha presentado un problema de tipo SQLException en el método eliminar de la clase ServicioAzureSqlDAO tratando de eliminar el Servicio \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00079.getIdentificador(), new Mensaje(CodigoMensaje.M00079,
+				"Se ha presentado un problema de tipo Exception en el método eliminar de la clase ServicioAzureSqlDAO tratando de eliminar el Servicio \\\"${1}\\\". Por favor, revise la traza completa del problema presentado para identificar lo que sucedió..."));
+		mensajes.put(CodigoMensaje.M00080.getIdentificador(), new Mensaje(CodigoMensaje.M00080,
+				"Se ha presentado un problema tratando de obtener la conexión con la base de datos"));
+		mensajes.put(CodigoMensaje.M00081.getIdentificador(), new Mensaje(CodigoMensaje.M00081,
+				"Se ha presentado un problema INESPERADO tratando de obtener la conexión con la base de datos"));
 	}
 
 	@Override

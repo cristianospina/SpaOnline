@@ -22,6 +22,8 @@ import co.edu.uco.spaonline.business.facade.impl.servicio.ModificarServicioFacad
 import co.edu.uco.spaonline.business.facade.impl.servicio.RegistrarServicioFacade;
 import co.edu.uco.spaonline.controller.response.ServicioResponse;
 import co.edu.uco.spaonline.crosscutting.exceptions.SpaOnlineException;
+import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
+import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.edu.uco.spaonline.dto.ServicioDTO;
 
 @RestController
@@ -52,7 +54,7 @@ public final class ServicioController {
 		}catch(final Exception exception) {
 			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 			
-			var mensajeUsuario= "Se ha presentado un problema intentando consultar un servicio";
+			var mensajeUsuario= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00039);
 			servicioResponse.getMensajes().add(mensajeUsuario);
 					exception.printStackTrace();
 		}
@@ -76,7 +78,7 @@ public final class ServicioController {
 		}catch(final Exception exception) {
 			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 			
-			var mensajeUsuario= "Se ha presentado un problema intentando registrar un Servicio";
+			var mensajeUsuario= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00040);
 			servicioResponse.getMensajes().add(mensajeUsuario);
 					exception.printStackTrace();
 		}
@@ -101,7 +103,7 @@ public final class ServicioController {
 		}catch(final Exception exception) {
 			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 			
-			var mensajeUsuario= "Se ha presentado un problema intentando Eliminar un servicio";
+			var mensajeUsuario= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00041);
 					ciudadResponse.getMensajes().add(mensajeUsuario);
 					exception.printStackTrace();
 		}
@@ -125,7 +127,7 @@ public final class ServicioController {
 		}catch(final Exception exception) {
 			httpStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 			
-			var mensajeUsuario= "Se ha presentado un problema intentando modificar un servicio";
+			var mensajeUsuario= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00042);
 					ciudadResponse.getMensajes().add(mensajeUsuario);
 					exception.printStackTrace();
 		}

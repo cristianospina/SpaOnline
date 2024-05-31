@@ -8,6 +8,8 @@ import co.edu.uco.spaonline.business.usecase.UseCaseWithoutReturn;
 import co.edu.uco.spaonline.business.usecase.impl.servicio.RegistrarServicio;
 import co.edu.uco.spaonline.crosscutting.exceptions.SpaOnlineException;
 import co.edu.uco.spaonline.crosscutting.exceptions.custom.BusinessSpaOnlineException;
+import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
+import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.edu.uco.spaonline.data.dao.factory.DAOFactory;
 import co.edu.uco.spaonline.dto.ServicioDTO;
 
@@ -33,8 +35,8 @@ public class RegistrarServicioFacade implements FacadeWithoutReturn<ServicioDTO>
 			throw exception;
 		}catch (final Exception excepcion) {
 			daoFactory.cancelarTransaccion();
-			var mensajeUsuario= "Se ha presentado un problema tratando de ingresar la informacion de la ciudad";
-			var mensajeTecnico = "Se ha presentado un problema  INESPERADO tratando de ingresar la informacion de la ciudad";
+			var mensajeUsuario= MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00049);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00050);
 			throw new BusinessSpaOnlineException(mensajeUsuario, mensajeTecnico);
 		} finally{
 			daoFactory.cerrarConexion();

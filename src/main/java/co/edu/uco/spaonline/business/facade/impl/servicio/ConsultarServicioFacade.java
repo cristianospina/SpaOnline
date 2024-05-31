@@ -8,6 +8,8 @@ import co.edu.uco.spaonline.business.facade.FacadeWithReturn;
 import co.edu.uco.spaonline.business.usecase.impl.servicio.ConsultarServicio;
 import co.edu.uco.spaonline.crosscutting.exceptions.SpaOnlineException;
 import co.edu.uco.spaonline.crosscutting.exceptions.custom.BusinessSpaOnlineException;
+import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.MessageCatalogStrategy;
+import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.edu.uco.spaonline.data.dao.factory.DAOFactory;
 import co.edu.uco.spaonline.dto.ServicioDTO;
 
@@ -34,8 +36,8 @@ public class ConsultarServicioFacade implements FacadeWithReturn<ServicioDTO, Li
 		}catch(final SpaOnlineException exception) {
 			throw exception;
 		}catch (final Exception excepcion) {
-			var mensajeUsuario= "Se ha presentado un problema tratando de consultar la informacion de Servicio";
-			var mensajeTecnico = "Se ha presentado un problema  INESPERADO tratando de consultar la informacion de Servicio";
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00043);
+			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00044);
 			throw new BusinessSpaOnlineException(mensajeUsuario, mensajeTecnico);
 		} finally{
 			daoFactory.cerrarConexion();
