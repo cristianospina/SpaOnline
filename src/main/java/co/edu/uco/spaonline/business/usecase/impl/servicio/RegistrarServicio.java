@@ -33,6 +33,7 @@ public class RegistrarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 	public void execute(ServicioDomain data) {
 		validarIntegridadDato(data);
 		validarServicioMismoNombreMismoTipoServicio(data.getNombre(), data.getTiposervicio());
+		validarexistencia(data);
 		var servicioEntity = ServicioEntity.build().setId(generarUUIDAleatorio()).setNombre(data.getNombre()).setDescipcion(data.getDescipcion()).setTiposervicio(data.getTiposervicio()).setTarifa(data.getTarifa());
 
 		factory.getServicioDAO().crear(servicioEntity);
@@ -88,5 +89,11 @@ public class RegistrarServicio implements UseCaseWithoutReturn<ServicioDomain>{
             return false;
         }
     }
+	public static void validarexistencia(ServicioDomain data) {
+		if (ObjectHelper.esNulooVacio(data)) {
+			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00082);
+			throw new BusinessSpaOnlineException(mensajeUsuario);
+		}
+	}
 
 }

@@ -18,6 +18,7 @@ public final class MessageCatalogExternalService implements MessageCatalog {
 	public void inicializar() {
 		mensajes.clear();
 		mensajes.put(CodigoMensaje.M00007.getIdentificador(), new Mensaje(CodigoMensaje.M00007, "La transaccion se ha completado de forma satisfactoria..."));	
+		mensajes.put(CodigoMensaje.M00082.getIdentificador(), new Mensaje(CodigoMensaje.M00082, "el objeto no puede ser nulo o vacio"));
 	}
 
 	@Override
