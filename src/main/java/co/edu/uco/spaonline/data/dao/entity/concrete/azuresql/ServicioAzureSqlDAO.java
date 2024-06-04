@@ -19,6 +19,7 @@ import co.edu.uco.spaonline.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.spaonline.data.dao.entity.ServicioDAO;
 import co.edu.uco.spaonline.data.dao.entity.concrete.SqlConnection;
 import co.edu.uco.spaonline.entity.ServicioEntity;
+import co.edu.uco.spaonline.entity.TipoServicioEntity;
 
 public final class ServicioAzureSqlDAO extends SqlConnection implements ServicioDAO {
 	
@@ -39,7 +40,7 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 			sentenciaSqlPreparada.setObject(1, data.getId());
 			sentenciaSqlPreparada.setString(2, data.getNombre());
 			sentenciaSqlPreparada.setString(3, data.getDescipcion());
-			sentenciaSqlPreparada.setString(4, data.getTiposervicio());
+			sentenciaSqlPreparada.setObject(4, data.getTiposervicio().getId());
 			sentenciaSqlPreparada.setLong(5, data.getTarifa());
 			
 			
@@ -73,7 +74,7 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 		        
 		        sentenciaPreparada.setString(1, data.getNombre());
 		        sentenciaPreparada.setString(2, data.getDescipcion());
-		        sentenciaPreparada.setString(3, data.getTiposervicio());
+		        sentenciaPreparada.setObject(3, data.getTiposervicio().getId());
 		        sentenciaPreparada.setLong(4, data.getTarifa());
 		        sentenciaPreparada.setObject(5, data.getId());
 		        
@@ -109,7 +110,8 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 				            	servicio.setId( UUIDHelper.convertToUUID(resultadoConsulta.getString("id")) );
 				            	servicio.setNombre(resultadoConsulta.getString("nombre"));
 				            	servicio.setDescipcion(resultadoConsulta.getString("descripcion"));
-				            	servicio.setTiposervicio(resultadoConsulta.getString("tiposervicio"));
+				            	TipoServicioEntity tipoServicio = new TipoServicioEntity();
+				            	tipoServicio.setId( UUIDHelper.convertToUUID(resultadoConsulta.getString("id"))) ;
 				            	servicio.setTarifa(resultadoConsulta.getLong("tarifa"));
 				                
 				                resultado.add(servicio);
@@ -169,7 +171,7 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 				operadorCondicional = " AND";
 				parametros.add(data.getDescipcion());
 			}
-			if(!TextHelper.isNullOrEmpty(data.getTiposervicio())) {
+			if(!ObjectHelper.isNull(data.getTiposervicio().getId())&& !UUIDHelper.isDefault(data.getTiposervicio().getId()) ) {
 				sentenciaSql.append(operadorCondicional).append(" tiposervicio = ? ");
 				operadorCondicional = " AND";
 				parametros.add(data.getTiposervicio());

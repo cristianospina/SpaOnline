@@ -6,11 +6,13 @@ import java.util.List;
 
 import co.edu.uco.spaonline.business.assembler.entity.AssemblerEntity;
 import co.edu.uco.spaonline.business.domain.ServicioDomain;
+import co.edu.uco.spaonline.business.domain.TipoServicioDomain;
 import co.edu.uco.spaonline.entity.ServicioEntity;
+import co.edu.uco.spaonline.entity.TipoServicioEntity;
 
 public class ServicioAssemblerEntity implements AssemblerEntity< ServicioDomain, ServicioEntity>{
 	
-	
+private static final AssemblerEntity<TipoServicioDomain, TipoServicioEntity> tiposervicioAssembler =  TipoServicioAssemblerEntity.getinstace();	
 private static final AssemblerEntity< ServicioDomain, ServicioEntity> instance = new ServicioAssemblerEntity();
 	
 	private ServicioAssemblerEntity() {
@@ -23,7 +25,8 @@ private static final AssemblerEntity< ServicioDomain, ServicioEntity> instance =
 	
 	@Override
 	public ServicioDomain toDomain(ServicioEntity data) {
-		return ServicioDomain.build(data.getId(), data.getNombre(), data.getDescipcion() , data.getTiposervicio() , data.getTarifa());
+		var tiposervicio = tiposervicioAssembler.toDomain(data.getTiposervicio());
+		return ServicioDomain.build(data.getId(), data.getNombre(), data.getDescipcion() , tiposervicio , data.getTarifa());
 	}
 
 	@Override
@@ -37,7 +40,8 @@ private static final AssemblerEntity< ServicioDomain, ServicioEntity> instance =
 
 	@Override
 	public ServicioEntity toEntity(ServicioDomain domain) {
-		return ServicioEntity.build().setId(domain.getId()).setNombre(domain.getNombre()).setDescipcion(domain.getDescipcion()).setTiposervicio(domain.getTiposervicio()).setTarifa(domain.getTarifa());
+		var tiposervicio = tiposervicioAssembler.toEntity(domain.getTiposervicio());
+		return ServicioEntity.build().setId(domain.getId()).setNombre(domain.getNombre()).setDescipcion(domain.getDescipcion()).setTiposervicio(tiposervicio).setTarifa(domain.getTarifa());
 	}
 
 	

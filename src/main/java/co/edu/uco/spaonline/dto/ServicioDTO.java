@@ -8,14 +8,14 @@ public final class ServicioDTO {
 	private UUID id;
 	private String nombre;
 	private String descipcion;
-	private String tiposervicio;
+	private TipoServicioDTO tiposervicio;
 	private Long tarifa;
 	
 	private ServicioDTO() {
 		super();
 	}
 	
-	private ServicioDTO(final UUID id,final String nombre,final String descipcion,final String tiposervicio,final Long tarifa) {
+	private ServicioDTO(final UUID id,final String nombre,final String descipcion,final TipoServicioDTO tiposervicio,final Long tarifa) {
 		setId(id);
 		setNombre(nombre);
 		setDescipcion(descipcion);
@@ -55,11 +55,11 @@ public final class ServicioDTO {
 		return this;
 	}
 	
-	public final String getTiposervicio() {
+	public final TipoServicioDTO getTiposervicio() {
 		return tiposervicio;
 	}
 	
-	public final ServicioDTO setTiposervicio(String tiposervicio) {
+	public final ServicioDTO setTiposervicio(TipoServicioDTO tiposervicio) {
 		this.tiposervicio = tiposervicio;
 		return this;
 	}

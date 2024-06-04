@@ -2,7 +2,7 @@ package co.edu.uco.spaonline.business.usecase.impl.servicio;
 
 import java.util.UUID;
 
-
+import co.edu.uco.spaonline.business.assembler.entity.impl.TipoServicioAssemblerEntity;
 import co.edu.uco.spaonline.business.domain.ServicioDomain;
 import co.edu.uco.spaonline.business.usecase.UseCaseWithoutReturn;
 import co.edu.uco.spaonline.crosscutting.exceptions.custom.BusinessSpaOnlineException;
@@ -13,6 +13,7 @@ import co.edu.uco.spaonline.crosscutting.helpers.TextHelper;
 import co.edu.uco.spaonline.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.spaonline.data.dao.factory.DAOFactory;
 import co.edu.uco.spaonline.entity.ServicioEntity;
+import co.edu.uco.spaonline.entity.TipoServicioEntity;
 
 public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 
@@ -29,13 +30,13 @@ public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 	@Override
 	public void execute(ServicioDomain Data) {
 		validarIntegridadDato(Data);
-		validarServicioMismoNombreMismoTipoServicio(Data.getNombre(), Data.getTiposervicio());
-		var servicioEntity = ServicioEntity.build().setId(Data.getId()).setNombre(Data.getNombre()).setDescipcion(Data.getDescipcion()).setTiposervicio(Data.getTiposervicio()).setTarifa(Data.getTarifa());
+		validarServicioMismoNombreMismoTipoServicio(Data.getNombre(), Data.getTiposervicio().getId());
+		var servicioEntity = ServicioEntity.build().setId(Data.getId()).setNombre(Data.getNombre()).setDescipcion(Data.getDescipcion()).setTiposervicio(TipoServicioAssemblerEntity.getinstace().toEntity(Data.getTiposervicio())).setTarifa(Data.getTarifa());
 		factory.getServicioDAO().modificar(servicioEntity);
 		
 	}
-	private final void validarServicioMismoNombreMismoTipoServicio (final String nombreServicio, final String TipoServicio){
-		var servicioEntity = ServicioEntity.build().setNombre(nombreServicio).setTiposervicio(TipoServicio);
+	private final void validarServicioMismoNombreMismoTipoServicio (final String nombreServicio, final UUID tipoServicio){
+		var servicioEntity = ServicioEntity.build().setNombre(nombreServicio).setTiposervicio(TipoServicioEntity.build(tipoServicio, TextHelper.EMPTY));
 		var resultados = factory.getServicioDAO().consultar(servicioEntity);
 		if(!resultados.isEmpty()) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00053);
@@ -69,20 +70,13 @@ public class ModificarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 		}
 	}
 
-<<<<<<< HEAD
-	private final void validarFormato(final String dato) {
-=======
+
 	public final void validarFormato(final String dato) {
->>>>>>> b078e20899678e9637ff24ed4a5a151238f95159
 		if(!TextHelper.contieneSoloLetras(dato)) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00060);
 			throw new BusinessSpaOnlineException(mensajeUsuario);
 		}
 	}
-<<<<<<< HEAD
-=======
-
->>>>>>> b078e20899678e9637ff24ed4a5a151238f95159
 	public static boolean validarUUID(String s) {
         try {
             UUID.fromString(s);

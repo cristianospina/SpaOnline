@@ -124,7 +124,7 @@ public final class MessageCatalogBase  implements MessageCatalog{
 		mensajes.put(CodigoMensaje.M00053.getIdentificador(), new Mensaje(CodigoMensaje.M00053,
 				"Se ha presentado un problema tratando de validar la informacion de los servicios con el tiposervicio"));
 		mensajes.put(CodigoMensaje.M00054.getIdentificador(), new Mensaje(CodigoMensaje.M00054,
-				"Se ha presentado un problema tratando de validar la longitud"));
+				"Se ha presentado un problema tratando de validar la longitud de \\\"${1}\\"));
 		mensajes.put(CodigoMensaje.M00055.getIdentificador(), new Mensaje(CodigoMensaje.M00055,
 				"Se ha presentado un problema tratando de eliminar la informacion de los servicios"));
 		mensajes.put(CodigoMensaje.M00056.getIdentificador(), new Mensaje(CodigoMensaje.M00056,

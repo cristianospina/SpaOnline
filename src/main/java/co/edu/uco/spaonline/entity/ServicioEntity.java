@@ -3,19 +3,28 @@ package co.edu.uco.spaonline.entity;
 
 import java.util.UUID;
 
+import co.edu.uco.spaonline.crosscutting.helpers.NumHelper;
+import co.edu.uco.spaonline.crosscutting.helpers.ObjectHelper;
+import co.edu.uco.spaonline.crosscutting.helpers.TextHelper;
+import co.edu.uco.spaonline.crosscutting.helpers.UUIDHelper;
+
 public final class ServicioEntity {
 	
 	private UUID id;
 	private String nombre;
 	private String descipcion;
-	private String tiposervicio;
+	private TipoServicioEntity tiposervicio;
 	private Long tarifa;
 	
 	public ServicioEntity() {
-		super();
+		setId(UUIDHelper.generarUUIDDefecto());
+		setNombre(TextHelper.EMPTY);
+		setDescipcion(TextHelper.EMPTY);
+		setTiposervicio(TipoServicioEntity.build());
+		setTarifa(NumHelper.NUM_DEFECT);
 	}
 
-	public ServicioEntity(final UUID id,final String nombre,final String descipcion,final String tiposervicio,final Long tarifa) {
+	public ServicioEntity(final UUID id,final String nombre,final String descipcion,final TipoServicioEntity tiposervicio,final Long tarifa) {
 		setId(id);
 		setNombre(nombre);
 		setDescipcion(descipcion);
@@ -54,12 +63,12 @@ public final class ServicioEntity {
 		return this;
 	}
 	
-	public final String getTiposervicio() {
+	public final TipoServicioEntity getTiposervicio() {
 		return tiposervicio;
 	}
 	
-	public final ServicioEntity setTiposervicio(String tiposervicio) {
-		this.tiposervicio = tiposervicio;
+	public final ServicioEntity setTiposervicio(TipoServicioEntity tiposervicio) {
+		this.tiposervicio = ObjectHelper.getObjectHelper().getDefaultValue(tiposervicio, new TipoServicioEntity());
 		return this;
 	}
 	

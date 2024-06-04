@@ -13,11 +13,11 @@ public class ServicioDomain {
 	private UUID id;
 	private String nombre;
 	private String descipcion;
-	private String tiposervicio;
+	private TipoServicioDomain tiposervicio;
 	private Long tarifa;
 	
 	
-	protected ServicioDomain(final UUID id, final String nombre, final String descripcion, final String tiposervicio, final Long tarifa) {
+	protected ServicioDomain(final UUID id, final String nombre, final String descripcion, final TipoServicioDomain tiposervicio, final Long tarifa) {
 		setId(id);
 		setNombre(nombre);
 		setDescipcion(descripcion);
@@ -26,14 +26,14 @@ public class ServicioDomain {
 		
 	}
 	
-	public static ServicioDomain build(final UUID id, final String nombre, final String descripcion, final String tiposervicio, final Long tarifa) {
+	public static ServicioDomain build(final UUID id, final String nombre, final String descripcion, final TipoServicioDomain tiposervicio, final Long tarifa) {
 		return new ServicioDomain(id,nombre, descripcion , tiposervicio, tarifa);
 	}
 	public static ServicioDomain build(final UUID id) {
-		return new ServicioDomain(id,TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, NumHelper.NUM_DEFECT);
+		return new ServicioDomain(id,TextHelper.EMPTY, TextHelper.EMPTY, TipoServicioDomain.build(), NumHelper.NUM_DEFECT);
 	}
 	public static ServicioDomain build() {
-		return new ServicioDomain(UUIDHelper.generarUUIDDefecto(), TextHelper.EMPTY, TextHelper.EMPTY, TextHelper.EMPTY, NumHelper.NUM_DEFECT);
+		return new ServicioDomain(UUIDHelper.generarUUIDDefecto(), TextHelper.EMPTY, TextHelper.EMPTY, TipoServicioDomain.build(), NumHelper.NUM_DEFECT);
 	}
 
 	private final void setId(final UUID id) {
@@ -49,8 +49,8 @@ public class ServicioDomain {
 		this.descipcion = TextHelper.applyTrim(descipcion);
 	}
 
-	private final void setTiposervicio(final String tiposervicio) {
-		this.tiposervicio = TextHelper.applyTrim(tiposervicio);
+	private final void setTiposervicio(final TipoServicioDomain tiposervicio) {
+		this.tiposervicio =tiposervicio ;
 	}
 
 	private final void setTarifa(final Long tarifa) {
@@ -73,7 +73,7 @@ public class ServicioDomain {
 	}
 
 
-	public  String getTiposervicio() {
+	public  TipoServicioDomain getTiposervicio() {
 		return tiposervicio;
 	}
 

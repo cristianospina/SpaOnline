@@ -7,12 +7,14 @@ import java.util.List;
 
 import co.edu.uco.spaonline.business.assembler.dto.AssemblerDTO;
 import co.edu.uco.spaonline.business.domain.ServicioDomain;
+import co.edu.uco.spaonline.business.domain.TipoServicioDomain;
 import co.edu.uco.spaonline.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.spaonline.dto.ServicioDTO;
+import co.edu.uco.spaonline.dto.TipoServicioDTO;
 
 public class ServicioAssemblerDTO implements AssemblerDTO<ServicioDomain, ServicioDTO>{
 
-
+	private static final AssemblerDTO<TipoServicioDomain, TipoServicioDTO> tiposervicioAssembler = TipoServicioAssemblerDTO.getinstace();
 	private static final AssemblerDTO<ServicioDomain, ServicioDTO> instance = new ServicioAssemblerDTO();
 	
 	protected ServicioAssemblerDTO() {
@@ -25,7 +27,8 @@ public class ServicioAssemblerDTO implements AssemblerDTO<ServicioDomain, Servic
 
 	@Override
 	public ServicioDomain toDomain(ServicioDTO data) {
-		return ServicioDomain.build(data.getId(),data.getNombre() , data.getDescipcion(), data.getTiposervicio(), data.getTarifa());
+		var tiposervicio =  tiposervicioAssembler.toDomain(data.getTiposervicio());
+		return ServicioDomain.build(data.getId(),data.getNombre() , data.getDescipcion(), tiposervicio, data.getTarifa());
 	}
 
 	@Override
@@ -36,7 +39,8 @@ public class ServicioAssemblerDTO implements AssemblerDTO<ServicioDomain, Servic
 
 	@Override
 	public ServicioDTO toDTO(ServicioDomain domain) {
-		return ServicioDTO.build().setId(domain.getId()).setNombre(domain.getNombre()).setDescipcion(domain.getDescipcion()).setTiposervicio(domain.getTiposervicio()).setTarifa(domain.getTarifa());
+		var tiposervicio =  tiposervicioAssembler.toDTO(domain.getTiposervicio());
+		return ServicioDTO.build().setId(domain.getId()).setNombre(domain.getNombre()).setDescipcion(domain.getDescipcion()).setTiposervicio(tiposervicio).setTarifa(domain.getTarifa());
 	}
 
 	@Override

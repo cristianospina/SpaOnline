@@ -1,6 +1,7 @@
 package co.edu.uco.spaonline.data.dao.factory;
 
 import co.edu.uco.spaonline.data.dao.entity.ServicioDAO;
+import co.edu.uco.spaonline.data.dao.entity.TipoServicioDAO;
 import co.edu.uco.spaonline.data.dao.factory.concrete.AzureSQLDAOFactory;
 
 public interface DAOFactory {
@@ -16,4 +17,5 @@ public interface DAOFactory {
 	void cancelarTransaccion();
 	
 	ServicioDAO getServicioDAO();
+	TipoServicioDAO getTipoServicioDAO();
 }
