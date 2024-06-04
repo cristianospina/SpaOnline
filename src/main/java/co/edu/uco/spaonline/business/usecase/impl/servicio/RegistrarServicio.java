@@ -15,7 +15,6 @@ import co.edu.uco.spaonline.crosscutting.helpers.UUIDHelper;
 import co.edu.uco.spaonline.data.dao.factory.DAOFactory;
 import co.edu.uco.spaonline.entity.ServicioEntity;
 import co.edu.uco.spaonline.entity.TipoServicioEntity;
-import jakarta.websocket.Decoder.Text;
 
 public class RegistrarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 	
@@ -35,7 +34,7 @@ public class RegistrarServicio implements UseCaseWithoutReturn<ServicioDomain>{
 	@Override
 	public void execute(ServicioDomain data) {
 		validarIntegridadDato(data);
-		validarServicioMismoNombreMismoTipoServicio(data.getNombre(), data.getTiposervicio().getId());
+		validarServicioMismoNombreMismoTipoServicio(data.getNombre(), data.getTiposervicio().getId()); 
 		validarexistencia(data);
 		var servicioEntity = ServicioEntity.build().setId(generarUUIDAleatorio()).setNombre(data.getNombre()).setDescipcion(data.getDescipcion()).setTiposervicio(TipoServicioAssemblerEntity.getinstace().toEntity(data.getTiposervicio())).setTarifa(data.getTarifa());
 
@@ -50,9 +49,9 @@ public class RegistrarServicio implements UseCaseWithoutReturn<ServicioDomain>{
         return new UUID(mas, menos);
     }
 	
-	private final void validarServicioMismoNombreMismoTipoServicio (final String nombreservicio, final UUID tiposervicio){
-		var ciudadEntity = ServicioEntity.build().setNombre(nombreservicio).setTiposervicio(TipoServicioEntity.build(tiposervicio, TextHelper.EMPTY));
-		var resultados = factory.getServicioDAO().consultar(ciudadEntity);
+	private final void validarServicioMismoNombreMismoTipoServicio (final String nombreservicio , final UUID tiposervicio){ 
+		var servicioEntity = ServicioEntity.build().setNombre(nombreservicio).setTiposervicio(TipoServicioEntity.build(tiposervicio, TextHelper.EMPTY));
+		var resultados = factory.getServicioDAO().consultar(servicioEntity);
 		if(!resultados.isEmpty()) {
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00053);
 			throw new BusinessSpaOnlineException(mensajeUsuario);

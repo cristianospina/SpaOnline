@@ -3,6 +3,10 @@ package co.edu.uco.spaonline.dto;
 
 import java.util.UUID;
 
+import co.edu.uco.spaonline.crosscutting.helpers.NumHelper;
+import co.edu.uco.spaonline.crosscutting.helpers.TextHelper;
+import co.edu.uco.spaonline.crosscutting.helpers.UUIDHelper;
+
 public final class ServicioDTO {
 	
 	private UUID id;
@@ -12,7 +16,11 @@ public final class ServicioDTO {
 	private Long tarifa;
 	
 	private ServicioDTO() {
-		super();
+		setId(UUIDHelper.generarUUIDDefecto());
+		setNombre(TextHelper.EMPTY);
+		setDescipcion(TextHelper.EMPTY);
+		setTiposervicio(TipoServicioDTO.build());
+		setTarifa(NumHelper.NUM_DEFECT);
 	}
 	
 	private ServicioDTO(final UUID id,final String nombre,final String descipcion,final TipoServicioDTO tiposervicio,final Long tarifa) {

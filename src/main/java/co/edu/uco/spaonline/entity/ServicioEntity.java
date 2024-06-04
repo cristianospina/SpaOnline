@@ -4,7 +4,6 @@ package co.edu.uco.spaonline.entity;
 import java.util.UUID;
 
 import co.edu.uco.spaonline.crosscutting.helpers.NumHelper;
-import co.edu.uco.spaonline.crosscutting.helpers.ObjectHelper;
 import co.edu.uco.spaonline.crosscutting.helpers.TextHelper;
 import co.edu.uco.spaonline.crosscutting.helpers.UUIDHelper;
 
@@ -34,6 +33,9 @@ public final class ServicioEntity {
 	
 	public static final ServicioEntity build() {
 		return new ServicioEntity();
+	}
+	public static final ServicioEntity build(final UUID id,final String nombre,final String descipcion,final TipoServicioEntity tiposervicio,final Long tarifa) {
+		return new ServicioEntity(id,nombre,descipcion,tiposervicio,tarifa);
 	}
 	
 	public final UUID getId() {
@@ -67,8 +69,8 @@ public final class ServicioEntity {
 		return tiposervicio;
 	}
 	
-	public final ServicioEntity setTiposervicio(TipoServicioEntity tiposervicio) {
-		this.tiposervicio = ObjectHelper.getObjectHelper().getDefaultValue(tiposervicio, new TipoServicioEntity());
+	public final ServicioEntity setTiposervicio(final TipoServicioEntity tiposervicio) {
+		this.tiposervicio = tiposervicio;
 		return this;
 	}
 	

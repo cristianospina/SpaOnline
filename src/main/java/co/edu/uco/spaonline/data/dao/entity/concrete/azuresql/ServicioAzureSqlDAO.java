@@ -3,6 +3,8 @@ package co.edu.uco.spaonline.data.dao.entity.concrete.azuresql;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,7 +48,7 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 			
 			sentenciaSqlPreparada.executeUpdate();
 			
-		} catch(SQLException exception) {
+		} catch(SQLException exception) { 
 			var mensajeUsuario = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00063);
 			var mensajeTecnico = MessageCatalogStrategy.getContenidoMensaje(CodigoMensaje.M00064);
 
@@ -100,8 +102,7 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 		
 		String sentenciaSql = formarSentenciaConsulta(data,parametros);
 			
-	
-				try (final PreparedStatement sentenciaPreparada = getConexion().prepareStatement(sentenciaSql)) {
+		try (final PreparedStatement sentenciaPreparada = getConexion().prepareStatement(sentenciaSql)) {
 					colocarParametrosConsulta(sentenciaPreparada, parametros );					        
 				        try (final ResultSet resultadoConsulta = sentenciaPreparada.executeQuery()) {
 		
@@ -111,7 +112,8 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 				            	servicio.setNombre(resultadoConsulta.getString("nombre"));
 				            	servicio.setDescipcion(resultadoConsulta.getString("descripcion"));
 				            	TipoServicioEntity tipoServicio = new TipoServicioEntity();
-				            	tipoServicio.setId( UUIDHelper.convertToUUID(resultadoConsulta.getString("id"))) ;
+				            	tipoServicio.setId( UUIDHelper.convertToUUID(resultadoConsulta.getString("tiposervicio"))) ;
+				            	servicio.setTiposervicio(tipoServicio);
 				            	servicio.setTarifa(resultadoConsulta.getLong("tarifa"));
 				                
 				                resultado.add(servicio);
@@ -134,7 +136,7 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 	private final void colocarParametrosConsulta(final PreparedStatement sentenciaPreparada, final List<Object> parametros ) {
 		try {
 			for (int indice = 0; indice < parametros.size(); indice++) {
-				sentenciaPreparada.setObject(indice + 1 , parametros.get(indice));
+				sentenciaPreparada.setObject(indice + 1 ,  parametros.get(indice));
 			}
 			
 		}catch(final SQLException excepcion) {
@@ -171,10 +173,10 @@ public final class ServicioAzureSqlDAO extends SqlConnection implements Servicio
 				operadorCondicional = " AND";
 				parametros.add(data.getDescipcion());
 			}
-			if(!ObjectHelper.isNull(data.getTiposervicio().getId())&& !UUIDHelper.isDefault(data.getTiposervicio().getId()) ) {
+			if(!ObjectHelper.isNull(data.getTiposervicio().getId()) && !UUIDHelper.isDefault(data.getId())) {
 				sentenciaSql.append(operadorCondicional).append(" tiposervicio = ? ");
 				operadorCondicional = " AND";
-				parametros.add(data.getTiposervicio());
+				parametros.add(data.getTiposervicio().getId());
 			}
 			if(!ObjectHelper.isNull(data.getTarifa())&& !NumHelper.isDefaultValue(data.getTarifa())) {
 				sentenciaSql.append(operadorCondicional).append(" tarifa = ? ");

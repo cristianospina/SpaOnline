@@ -2,13 +2,17 @@ package co.edu.uco.spaonline.entity;
 
 import java.util.UUID;
 
+import co.edu.uco.spaonline.crosscutting.helpers.TextHelper;
+import co.edu.uco.spaonline.crosscutting.helpers.UUIDHelper;
+
 public class TipoServicioEntity {
 
 	private UUID id;
 	private String nombre;
 	
 	public TipoServicioEntity() {
-		super();
+		setId(UUIDHelper.generarUUIDDefecto());
+		setNombre(TextHelper.EMPTY);
 	}
 	
 	public TipoServicioEntity(final UUID id,final String nombre) {
