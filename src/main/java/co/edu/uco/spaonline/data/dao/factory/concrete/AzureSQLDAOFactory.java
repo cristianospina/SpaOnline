@@ -8,9 +8,11 @@ import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.MessageCatalo
 import co.edu.uco.spaonline.crosscutting.exceptions.messagecatalog.data.CodigoMensaje;
 import co.edu.uco.spaonline.crosscutting.helpers.SQLHelper;
 import co.edu.uco.spaonline.data.dao.entity.ServicioDAO;
+import co.edu.uco.spaonline.data.dao.entity.TipoIdentificacionDAO;
 import co.edu.uco.spaonline.data.dao.entity.TipoServicioDAO;
 import co.edu.uco.spaonline.data.dao.entity.concrete.SqlConnection;
 import co.edu.uco.spaonline.data.dao.entity.concrete.azuresql.ServicioAzureSqlDAO;
+import co.edu.uco.spaonline.data.dao.entity.concrete.azuresql.TipoIdentificacionAzureSqlDAO;
 import co.edu.uco.spaonline.data.dao.entity.concrete.azuresql.TipoServicioAzureSqlDAO;
 import co.edu.uco.spaonline.data.dao.factory.DAOFactory;
 
@@ -67,6 +69,11 @@ public final class AzureSQLDAOFactory extends SqlConnection implements DAOFactor
 	@Override
 	public TipoServicioDAO getTipoServicioDAO() {
 		return new TipoServicioAzureSqlDAO(getConexion());
+	}
+
+	@Override
+	public TipoIdentificacionDAO getTipoIdentificacionDAO() {
+		return new TipoIdentificacionAzureSqlDAO(getConexion());
 	}
 
 
